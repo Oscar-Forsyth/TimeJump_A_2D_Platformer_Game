@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.layer);
+     
         if (collision.gameObject.tag.Equals("Ground") == true)
         {
             canJump = true;
