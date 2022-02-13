@@ -7,10 +7,14 @@ public class InventorySystem : MonoBehaviour
     private Dictionary<InventoryItemData, InventoryItem> m_itemDictionary;
     public List<InventoryItem> inventory { get; private set; }
 
+    public static InventorySystem current;
+
     private void Awake()
     {
         inventory = new List<InventoryItem>();
         m_itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
+
+        current = GameObject.Find("Inventory").GetComponent<InventorySystem>();
     }
 
     public InventoryItem Get(InventoryItemData referenceData)
@@ -34,6 +38,7 @@ public class InventorySystem : MonoBehaviour
             inventory.Add(newItem);
             m_itemDictionary.Add(referenceData, newItem);
         }
+        Debug.Log(inventory.Count);
     }
     public void Remove(InventoryItemData referenceData)
     {
