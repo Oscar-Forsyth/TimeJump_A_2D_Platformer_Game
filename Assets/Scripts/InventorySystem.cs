@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +10,15 @@ public class InventorySystem : MonoBehaviour
 
     public static InventorySystem current;
 
+    public event Action onInventoryChangedEvent;
+
     private void Awake()
     {
         inventory = new List<InventoryItem>();
         m_itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
 
-        current = GameObject.Find("Inventory").GetComponent<InventorySystem>();
+        current = this;//GameObject.Find("Inventory").GetComponent<InventorySystem>();
+
     }
 
     public InventoryItem Get(InventoryItemData referenceData)
@@ -31,14 +35,22 @@ public class InventorySystem : MonoBehaviour
         if (m_itemDictionary.TryGetValue(referenceData, out InventoryItem value))
         {
             value.AddToStack();
+            Debug.Log("Item: " + value.data.id + ". Amount:" + value.stackSize);
         }
         else
         {
             InventoryItem newItem = new InventoryItem(referenceData);
             inventory.Add(newItem);
             m_itemDictionary.Add(referenceData, newItem);
+            for (int i = 0; i < inventory.Count; i++)
+            {
+                Debug.Log(inventory[i].data.id);
+            }
         }
-        Debug.Log(inventory.Count);
+        if (onInventoryChangedEvent != null)
+        {
+            onInventoryChangedEvent();
+        }
     }
     public void Remove(InventoryItemData referenceData)
     {
@@ -50,6 +62,10 @@ public class InventorySystem : MonoBehaviour
                 inventory.Remove(value);
                 m_itemDictionary.Remove(referenceData);
             }
+        }
+        if (onInventoryChangedEvent != null)
+        {
+            onInventoryChangedEvent();
         }
     }
 }
