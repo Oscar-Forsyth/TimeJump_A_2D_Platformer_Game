@@ -10,7 +10,7 @@ public class MovePlatTrigger : MonoBehaviour
     public float speed;
     public int startingPoint;
     public Transform[] points;
-    ArrayList numberCheck = new ArrayList();
+   
 
     private int i;
 
