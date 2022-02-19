@@ -68,4 +68,37 @@ public class InventorySystem : MonoBehaviour
             onInventoryChangedEvent();
         }
     }
+    public void RightShuffle()
+    {
+        //Debug.Log(inventory[0].data.displayName)
+        if (inventory.Count <= 1)
+        {
+            return;
+        }
+        InventoryItem item = inventory[0];
+        inventory.Remove(item);
+        inventory.Add(item);
+        //Calls for UI update
+        if (onInventoryChangedEvent != null)
+        {
+            onInventoryChangedEvent();
+        }
+    }
+    public void LeftShuffle()
+    {
+        if (inventory.Count <= 1)
+        {
+            return;
+        }
+
+        InventoryItem item = inventory[inventory.Count-1];
+        inventory.Remove(item);
+        inventory.Insert(0, item);
+
+        //Calls for UI update
+        if (onInventoryChangedEvent != null)
+        {
+            onInventoryChangedEvent();
+        }
+    }
 }
