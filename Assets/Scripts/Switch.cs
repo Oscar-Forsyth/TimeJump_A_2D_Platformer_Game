@@ -5,6 +5,7 @@ using UnityEngine;
 public class Switch : MonoBehaviour
 {
     public GameObject wall;
+    public GameObject futureWall; 
     public GameObject box;
     public float speed;
     public Transform[] points;
@@ -25,28 +26,34 @@ public class Switch : MonoBehaviour
     }
     void Update()
     {
-        
-        //checks if box is too close,then stop moving
-        if(Vector2.Distance(wall.transform.position, box.transform.position) < distance)
+        if (!LevelManager.instance.getPlayerStatus()) //makes sure player is in past
         {
-            goingDown = false;
-        }
-        if (goingUp)
-        {
-            if (Vector2.Distance(wall.transform.position, points[1].position) < 0.02f)
-            {
-                goingUp = false;
-            }
-            wall.transform.position = Vector2.MoveTowards(wall.transform.position, points[1].position, speed * Time.deltaTime);
-        }
-        if (goingDown)
-        {
-            if (Vector2.Distance(wall.transform.position, points[0].position) < 0.02f)
+ 
+            //checks if box is too close,then stop moving
+            if (Vector2.Distance(wall.transform.position, box.transform.position) < distance)
             {
                 goingDown = false;
             }
-            wall.transform.position = Vector2.MoveTowards(wall.transform.position, points[0].position, speed * Time.deltaTime);
+            if (goingUp)
+            {
+                futureWall.transform.position = points[3].position; //moves the futurewall up
+                if (Vector2.Distance(wall.transform.position, points[1].position) < 0.02f)
+                {
+                    goingUp = false;
+                }
+                wall.transform.position = Vector2.MoveTowards(wall.transform.position, points[1].position, speed * Time.deltaTime);
+            }
+            if (goingDown)
+            {
+                futureWall.transform.position = points[2].position; //moves the futurewall down
+                if (Vector2.Distance(wall.transform.position, points[0].position) < 0.02f)
+                {
+                    goingDown = false;
+                }
+                wall.transform.position = Vector2.MoveTowards(wall.transform.position, points[0].position, speed * Time.deltaTime);
+            }
         }
+
     }
 
 

@@ -22,23 +22,17 @@ public class MovePlatTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (on)
+        if (!LevelManager.instance.getPlayerStatus()) //makes sure player is in past
         {
-            /*
-            if (Vector2.Distance(platform.transform.position, points[i].position) < 0.02f)
+            if (on)
             {
-                i++;
-                if (i == points.Length)
-                {
-                    i = 0;
-                }
+
+                platform.transform.position = Vector2.MoveTowards(platform.transform.position, points[0].position, speed * Time.deltaTime);
             }
-            */
-            platform.transform.position = Vector2.MoveTowards(platform.transform.position, points[0].position, speed * Time.deltaTime);
-        }
-        else
-        {
-            platform.transform.position = Vector2.MoveTowards(platform.transform.position, points[1].position, speed * Time.deltaTime);
+            else
+            {
+                platform.transform.position = Vector2.MoveTowards(platform.transform.position, points[1].position, speed * Time.deltaTime);
+            }
         }
     }
    
