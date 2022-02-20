@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     public Transform respawnPoint;
     public GameObject playerPrefab;
     private bool isPlayerInFuture = true;
+    private bool canMove = true;
 
     private void Awake()
     {
@@ -26,6 +27,14 @@ public class LevelManager : MonoBehaviour
     public bool getPlayerStatus()
     {
         return isPlayerInFuture;
+    }
+    public void setCanMove(bool b)
+    {
+        canMove = b;
+    }
+    public bool getCanMove()
+    {
+        return canMove;
     }
 
 }

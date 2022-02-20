@@ -10,6 +10,7 @@ public class TriggerDialog : MonoBehaviour{
     public float typingSpeed;
 
     public GameObject continueButton;
+    public GameObject player;
 
     private bool played = false;
     
@@ -20,7 +21,8 @@ public class TriggerDialog : MonoBehaviour{
             StartCoroutine(Type());
             played = true;
         }
-        
+
+        LevelManager.instance.setCanMove(false);
     }
 
     void Update()
@@ -28,6 +30,11 @@ public class TriggerDialog : MonoBehaviour{
         if (textDisplay.text == sentences[index])
         {
             continueButton.SetActive(true);
+        }
+        if (textDisplay.text == "")
+        {
+            LevelManager.instance.setCanMove(true);
+            Debug.Log(textDisplay.text);
         }
     }
 
