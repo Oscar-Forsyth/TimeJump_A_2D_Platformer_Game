@@ -15,13 +15,18 @@ public class TeleportScript : MonoBehaviour
 
     private void Update()
     {
-
+        if (Input.GetKey(teleportKey) && canPort)
+        {
+            portNow = true;
+            canPort = false;
+        }
         if (!canPort)
         {
             if (count > delay)
             {
                 count = 0;
                 canPort = true;
+                portNow = false;
             }
             count++;
         }
@@ -29,17 +34,12 @@ public class TeleportScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKey(teleportKey) && canPort)
-        {
-            portNow = true;
-            canPort = false;
-        }
         if (collision.gameObject.tag.Equals("Player") && portNow)
         {
+            portNow = false;
             Vector3 offset = transform.position - collision.gameObject.transform.position;
             destinationPortal.GetComponent<TeleportScript>().canPort = false;
             destinationPortal.GetComponent<TeleportScript>().portNow = false;
-            portNow = false;
             collision.gameObject.transform.position = destinationPortal.gameObject.transform.position - offset;
         }
     }
