@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     bool facingRight = true;
 
     private Rigidbody2D rb;
+    private bool canMove;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -22,20 +23,30 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-        Vector2 dir = new Vector2(x, y);
-
-        currentSpeed = Input.GetAxisRaw("Horizontal") * moveSpeed;
-        animator.SetFloat("Speed", Mathf.Abs(currentSpeed));
-        checkFalling();
-
-        Move(dir);
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        canMove = LevelManager.instance.getCanMove();
+        if (canMove)
         {
-            Jump();
-            canJump = false;
+            float x = Input.GetAxis("Horizontal");
+            float y = Input.GetAxis("Vertical");
+            Vector2 dir = new Vector2(x, y);
+
+            currentSpeed = Input.GetAxisRaw("Horizontal") * moveSpeed;
+            animator.SetFloat("Speed", Mathf.Abs(currentSpeed));
+            checkFalling();
+
+            Move(dir);
+            if (Input.GetKeyDown(KeyCode.Space) && canJump)
+            {
+                Jump();
+                canJump = false;
+            }
         }
+        else
+        {
+            animator.SetFloat("Speed", 0f);
+        }
+       
+
 
     }
     private void Flip()

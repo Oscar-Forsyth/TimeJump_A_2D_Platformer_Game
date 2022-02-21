@@ -7,6 +7,8 @@ public class RoomManager : MonoBehaviour
 
     public GameObject virtualCam;
 
+   
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player") && !collision.isTrigger)
