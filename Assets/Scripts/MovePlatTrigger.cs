@@ -27,7 +27,7 @@ public class MovePlatTrigger : MonoBehaviour
             if (on)
             {
 
-                platform.transform.position = Vector2.MoveTowards(platform.transform.position, points[0].position, speed * Time.deltaTime);
+                platform.transform.position = Vector2.MoveTowards(platform.transform.position, points[0].position, speed  * Time.deltaTime);
             }
             else
             {

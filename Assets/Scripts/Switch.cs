@@ -7,6 +7,7 @@ public class Switch : MonoBehaviour
     public GameObject wall;
     public GameObject futureWall; 
     public GameObject box;
+    public GameObject futureBox;
     public float speed;
     public Transform[] points;
     private bool goingUp = false;
@@ -22,6 +23,7 @@ public class Switch : MonoBehaviour
         float wallLength = wall.GetComponent<Collider2D>().bounds.size.y;
         float boxHeight = box.GetComponent<Collider2D>().bounds.size.y;
         distance = wallLength/2 + boxHeight/2;
+        Debug.Log(boxHeight);
      
     }
     void Update()
@@ -36,7 +38,7 @@ public class Switch : MonoBehaviour
             }
             if (goingUp)
             {
-                futureWall.transform.position = points[3].position; //moves the futurewall up
+                futureWall.transform.position = points[4].position; //moves the futurewall up
                 if (Vector2.Distance(wall.transform.position, points[1].position) < 0.02f)
                 {
                     goingUp = false;
@@ -45,12 +47,19 @@ public class Switch : MonoBehaviour
             }
             if (goingDown)
             {
-                futureWall.transform.position = points[2].position; //moves the futurewall down
+               // checks if there is a box under the future wall, otherwise continue all the way down
+                futureWall.transform.position = points[3].position; 
+                if (Vector2.Distance(futureWall.transform.position, futureBox.transform.position) < distance)
+                {
+                    futureWall.transform.position = points[2].position;
+                }
+
+
                 if (Vector2.Distance(wall.transform.position, points[0].position) < 0.02f)
                 {
                     goingDown = false;
                 }
-                wall.transform.position = Vector2.MoveTowards(wall.transform.position, points[0].position, speed * Time.deltaTime);
+                wall.transform.position = Vector2.MoveTowards(wall.transform.position, points[0].position, speed  * Time.deltaTime);
             }
         }
 

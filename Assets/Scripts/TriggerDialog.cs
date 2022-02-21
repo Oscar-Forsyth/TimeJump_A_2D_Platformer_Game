@@ -31,11 +31,7 @@ public class TriggerDialog : MonoBehaviour{
         {
             continueButton.SetActive(true);
         }
-        if (textDisplay.text == "")
-        {
-            LevelManager.instance.setCanMove(true);
-            Debug.Log(textDisplay.text);
-        }
+       
     }
 
     IEnumerator Type()
@@ -60,7 +56,8 @@ public class TriggerDialog : MonoBehaviour{
         else
         {
             textDisplay.text = "";
-            continueButton.SetActive(false);
+            continueButton.SetActive(false); 
+            LevelManager.instance.setCanMove(true);
         }
     }
 }

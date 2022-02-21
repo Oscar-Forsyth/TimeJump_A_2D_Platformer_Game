@@ -18,11 +18,13 @@ public class LevelManager : MonoBehaviour
 
     public void Respawn()
     {
+        setPlayerStatus(true); // OBS must respawn in future
         Instantiate(playerPrefab, respawnPoint.position, Quaternion.identity);
     }
     public void setPlayerStatus(bool status)
     {
         isPlayerInFuture = status;
+        Debug.Log(status);
     }
     public bool getPlayerStatus()
     {
