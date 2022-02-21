@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906b77974eabdaa4cb943195e1280e8a, type: 3}
   m_Name: InventoryItem_Chpt3Key1
   m_EditorClassIdentifier: 
-  id: 
-  displayName: 
-  icon: {fileID: 0}
-  prefab: {fileID: 0}
+  id: Key1
+  displayName: Key1
+  icon: {fileID: 21300000, guid: 47551e4e34525964a841b9d2c9685a6c, type: 3}
+  prefab: {fileID: 4140516538500094929, guid: 75db321202e632b44980144defa0cb58, type: 3}
