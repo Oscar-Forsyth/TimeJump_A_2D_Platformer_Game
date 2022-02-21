@@ -9,6 +9,7 @@ TagManager:
   - Death
   - FutureRoom
   - PastRoom
+  - Ladder
   layers:
   - Default
   - TransparentFX
