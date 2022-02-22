@@ -50,13 +50,13 @@ public class DoorTrigger : MonoBehaviour
         if (isTrigg && door.transform.position.y < origY + 1)
         {
             door.transform.position += new Vector3(0, doorY + 2, 0);
-            this.transform.position += new Vector3(0, -0.1f, 0.1f);
+            //this.transform.position += new Vector3(0, -0.1f, 0.1f);
             
         }
         if(!isTrigg)
         {
             door.transform.position = origDoor;
-            this.transform.position += new Vector3(0, 0.1f, -0.1f);
+            //this.transform.position += new Vector3(0, 0.1f, -0.1f);
         }
     }
 
