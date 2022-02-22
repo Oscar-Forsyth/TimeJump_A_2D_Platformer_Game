@@ -20,6 +20,7 @@ public class KeyCheck : MonoBehaviour
             Destroy(door);
             InventorySystem.current.Remove(IID);
             this.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
+            Destroy(this.GetComponent<BoxCollider2D>());
         }
         else
         {

@@ -29,6 +29,8 @@ public class ItemObject : MonoBehaviour
         Vector2 itemPos = transform.position;
 
         float dist = Vector2.Distance(playerPos, itemPos);
+
+
         return dist < 1f;
        
     }
