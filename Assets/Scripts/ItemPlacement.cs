@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemPlacement : MonoBehaviour
+
+   
 {
     // Update is called once per frame
     void Update()
@@ -27,8 +29,10 @@ public class ItemPlacement : MonoBehaviour
         {
             return;
         }
+        
+        
         InventoryItemData item = InventorySystem.current.inventory[0].data;
-        Instantiate(item.prefab, transform.position, Quaternion.identity);
+        Instantiate(item.prefab, transform.position , Quaternion.identity);
         InventorySystem.current.Remove(item);
     }
 }

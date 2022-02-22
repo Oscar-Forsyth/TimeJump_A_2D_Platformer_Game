@@ -11,6 +11,7 @@ public class InventorySystem : MonoBehaviour
     public static InventorySystem current;
 
     public event Action onInventoryChangedEvent;
+    private InventoryItem droppedItem;
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class InventorySystem : MonoBehaviour
         if (m_itemDictionary.TryGetValue(referenceData, out InventoryItem value))
         {
             value.AddToStack();
-            Debug.Log("Item: " + value.data.id + ". Amount:" + value.stackSize);
+            //Debug.Log("Item: " + value.data.id + ". Amount:" + value.stackSize);
         }
         else
         {
@@ -44,7 +45,7 @@ public class InventorySystem : MonoBehaviour
             m_itemDictionary.Add(referenceData, newItem);
             for (int i = 0; i < inventory.Count; i++)
             {
-                Debug.Log(inventory[i].data.id);
+                //Debug.Log(inventory[i].data.id);
             }
         }
         if (onInventoryChangedEvent != null)
@@ -101,4 +102,5 @@ public class InventorySystem : MonoBehaviour
             onInventoryChangedEvent();
         }
     }
+    
 }

@@ -19,7 +19,8 @@ public class LevelManager : MonoBehaviour
     public void Respawn()
     {
         setPlayerStatus(true); // OBS must respawn in future
-        Instantiate(playerPrefab, respawnPoint.position, Quaternion.identity);
+        //Instantiate(playerPrefab, respawnPoint.position, Quaternion.identity);
+        playerPrefab.transform.position = respawnPoint.position;
     }
     public void setPlayerStatus(bool status)
     {
@@ -37,6 +38,10 @@ public class LevelManager : MonoBehaviour
     public bool getCanMove()
     {
         return canMove;
+    }
+    public Vector3 getPlayerPosition()
+    {
+        return playerPrefab.transform.position;
     }
 
 }
