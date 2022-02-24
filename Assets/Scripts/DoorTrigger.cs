@@ -12,6 +12,7 @@ public class DoorTrigger : MonoBehaviour
     float origY;
     Vector3 origDoor;
     ArrayList numberCheck = new ArrayList();
+    public float moveDistance = 3;
 
     private void Start()
     {
@@ -49,7 +50,7 @@ public class DoorTrigger : MonoBehaviour
     {
         if (isTrigg && door.transform.position.y < origY + 1)
         {
-            door.transform.position += new Vector3(0, doorY + 2, 0);
+            door.transform.position += new Vector3(0, moveDistance, 0);
             //this.transform.position += new Vector3(0, -0.1f, 0.1f);
             
         }
