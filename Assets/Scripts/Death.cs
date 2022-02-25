@@ -11,8 +11,9 @@ public class Death : MonoBehaviour
         {
             //Destroy(col.gameObject);
             LevelManager.instance.Respawn();
-
+            Debug.Log("hit player");
         }
+        Debug.Log("hit something");
     }
 
 
