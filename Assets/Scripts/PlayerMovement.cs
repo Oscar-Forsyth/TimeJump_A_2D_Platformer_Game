@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag.Equals("Ground") == true)
+        if (collision.gameObject.tag.Equals("Ground") == true || collision.gameObject.tag.Equals("Box") == true || collision.gameObject.tag.Equals("FutureBox") == true)
         {
             canJump = true;
             animator.SetBool("isJumping", false);

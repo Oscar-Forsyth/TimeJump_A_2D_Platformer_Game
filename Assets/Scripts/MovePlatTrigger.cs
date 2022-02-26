@@ -5,14 +5,10 @@ using UnityEngine;
 public class MovePlatTrigger : MonoBehaviour
 {
     public GameObject platform;
-    private bool on = false;
-
     public float speed;
-    public int startingPoint;
     public Transform[] points;
-   
+    private int count = 0;
 
-    private int i;
 
     void Start()
     {  
@@ -22,30 +18,32 @@ public class MovePlatTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!LevelManager.instance.getPlayerStatus()) //makes sure player is in past
+        if (!LevelManager.instance.getPlayerStatus() ) 
         {
-            if (on)
-            {
-
-                platform.transform.position = Vector2.MoveTowards(platform.transform.position, points[0].position, speed  * Time.deltaTime);
-            }
-            else
+            if(count == 0)
             {
                 platform.transform.position = Vector2.MoveTowards(platform.transform.position, points[1].position, speed * Time.deltaTime);
             }
+            else
+            {
+                platform.transform.position = Vector2.MoveTowards(platform.transform.position, points[0].position, speed * Time.deltaTime);
+            }
+            
         }
+       
     }
-   
     private void OnTriggerEnter2D(Collider2D other)
     {
-        on = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
+        count++;
        
-        on = false;
-
     }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        count--;
+        
+    }
+    
+
+  
    
 }

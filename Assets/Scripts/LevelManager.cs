@@ -25,7 +25,6 @@ public class LevelManager : MonoBehaviour
     public void setPlayerStatus(bool status)
     {
         isPlayerInFuture = status;
-        Debug.Log(status);
     }
     public bool getPlayerStatus()
     {
