@@ -12,6 +12,7 @@ TagManager:
   - Ladder
   - Tree
   - Seed
+  - FutureBox
   layers:
   - Default
   - TransparentFX
