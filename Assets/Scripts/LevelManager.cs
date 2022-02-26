@@ -32,6 +32,11 @@ public class LevelManager : MonoBehaviour
     }
     public void setCanMove(bool b)
     {
+        if(!b)
+        {
+            Rigidbody2D rb = playerPrefab.GetComponent<Rigidbody2D>();
+            rb.velocity = new Vector2(0.0f, 0.0f);
+        }
         canMove = b;
     }
     public bool getCanMove()
