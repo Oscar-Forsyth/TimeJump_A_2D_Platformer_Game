@@ -12,6 +12,11 @@ public class TriggerDialog : MonoBehaviour{
     public GameObject continueButton;
     public GameObject player;
 
+    public GameObject spareButton;
+    public GameObject killButton;
+    private string KILL_TEXT = "You killed him, on a hunch. What a shame";
+    private string SPARE_TEXT = "The future remains the same. Try harder";
+
     private bool played = false;
     
     void OnTriggerEnter2D(Collider2D col)
@@ -23,6 +28,7 @@ public class TriggerDialog : MonoBehaviour{
         }
 
         LevelManager.instance.setCanMove(false);
+        
     }
 
     void Update()
@@ -30,8 +36,41 @@ public class TriggerDialog : MonoBehaviour{
         if (textDisplay.text == sentences[index])
         {
             continueButton.SetActive(true);
+            
         }
-       
+        if (killButton != null && spareButton != null )
+        {
+            if (textDisplay.text == sentences[0])
+            {
+                continueButton.SetActive(false);
+                killButton.SetActive(true);
+                spareButton.SetActive(true);
+            }
+                
+        }
+
+    }
+    public void kill()
+    {
+        sentences[index+1] += KILL_TEXT;
+        Finish();
+
+    }
+    public void spare()
+    {
+        sentences[index+1] += SPARE_TEXT;
+        Finish();
+    }
+    private void Finish()
+    {
+        NextSentence();
+        killButton.SetActive(false);
+        spareButton.SetActive(false);
+        continueButton.SetActive(true);
+    }
+    public void Quit()
+    {
+        Application.Quit();
     }
 
     IEnumerator Type()
@@ -46,6 +85,8 @@ public class TriggerDialog : MonoBehaviour{
     public void NextSentence()
     {
         continueButton.SetActive(false);
+     
+     
 
         if (index < sentences.Length - 1)
         {
