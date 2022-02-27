@@ -25,9 +25,9 @@ public class TriggerDialog : MonoBehaviour{
         {
             StartCoroutine(Type());
             played = true;
+            LevelManager.instance.setCanMove(false);
         }
 
-        LevelManager.instance.setCanMove(false);
         
     }
 
