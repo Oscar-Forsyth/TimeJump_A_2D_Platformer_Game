@@ -27,4 +27,9 @@ public class PauseMenu : MonoBehaviour
     {
         LevelManager.instance.setCanMove(true);
     }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
