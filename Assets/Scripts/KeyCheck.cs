@@ -9,12 +9,12 @@ public class KeyCheck : MonoBehaviour
 
     [SerializeField]
     InventoryItemData IID;
-    
 
+    bool locked = true;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (CheckForItem())
+        if (locked && CheckForItem())
         {
             Debug.Log("True");
             Destroy(door);
@@ -25,6 +25,7 @@ public class KeyCheck : MonoBehaviour
             {
                 GameObject.Destroy(child.gameObject);
             }
+            locked = false;
         }
         else
         {

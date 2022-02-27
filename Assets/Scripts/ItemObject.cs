@@ -31,7 +31,7 @@ public class ItemObject : MonoBehaviour
         float dist = Vector2.Distance(playerPos, itemPos);
 
 
-        return dist < 1f;
+        return dist < 1.5f;
        
     }
     
