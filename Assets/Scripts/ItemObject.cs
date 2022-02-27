@@ -17,7 +17,7 @@ public class ItemObject : MonoBehaviour
     }
     public void Update()
     {
-        if (Pickable() && Input.GetKeyDown(KeyCode.C))
+        if (Pickable() && Input.GetKeyDown(KeyCode.Z))
         {
             OnHandlePickupItem();
         }
