@@ -15,8 +15,8 @@ public class TriggerDialog : MonoBehaviour{
 
     public GameObject spareButton;
     public GameObject killButton;
-    private string KILL_TEXT = "You killed him, on a hunch. What a shame";
-    private string SPARE_TEXT = "The future remains the same. Try harder";
+    private string KILL_TEXT = "You killed him, on a hunch. What a shame...";
+    private string SPARE_TEXT = "The future remains the same. Try harder.";
 
     private bool played = false;
     
