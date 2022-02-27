@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TriggerDialog : MonoBehaviour{
     public TextMeshProUGUI textDisplay;
@@ -70,7 +71,8 @@ public class TriggerDialog : MonoBehaviour{
     }
     public void Quit()
     {
-        Application.Quit();
+        //Application.Quit();
+        SceneManager.LoadScene("MainMenu");
     }
 
     IEnumerator Type()
