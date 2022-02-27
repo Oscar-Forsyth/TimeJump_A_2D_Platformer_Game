@@ -5,7 +5,7 @@ using UnityEngine;
 public class TeleportScript : MonoBehaviour
 {
     public GameObject destinationPortal;
-    private KeyCode teleportKey = KeyCode.E;
+    private KeyCode teleportKey = KeyCode.C;
     
     public bool portNow = false;
     public bool inRange = false;

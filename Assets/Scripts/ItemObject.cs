@@ -17,7 +17,7 @@ public class ItemObject : MonoBehaviour
     }
     public void Update()
     {
-        if (Pickable() && Input.GetKeyDown(KeyCode.C))
+        if (Pickable() && Input.GetKeyDown(KeyCode.Z))
         {
             OnHandlePickupItem();
         }
@@ -31,7 +31,7 @@ public class ItemObject : MonoBehaviour
         float dist = Vector2.Distance(playerPos, itemPos);
 
 
-        return dist < 1f;
+        return dist < 1.5f;
        
     }
     
