@@ -21,6 +21,10 @@ public class KeyCheck : MonoBehaviour
             InventorySystem.current.Remove(IID);
             this.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
             Destroy(this.GetComponent<BoxCollider2D>());
+            foreach (Transform child in transform)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
         }
         else
         {
