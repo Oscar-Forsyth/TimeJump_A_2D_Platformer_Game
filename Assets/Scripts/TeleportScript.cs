@@ -8,39 +8,51 @@ public class TeleportScript : MonoBehaviour
     private KeyCode teleportKey = KeyCode.E;
     
     public bool portNow = false;
-    public bool canPort = true;
+    public bool inRange = false;
     
-    private int count = 0;
-    private int delay = 100;
+    private GameObject player;
 
     private void Update()
     {
-        if (Input.GetKey(teleportKey) && canPort)
+        if (Input.GetKeyDown(teleportKey))
         {
             portNow = true;
-            canPort = false;
         }
-        if (!canPort)
+        if (Input.GetKeyUp(teleportKey))
         {
-            if (count > delay)
+            portNow = false;
+        }
+
+        if (portNow)
+        {
+            if (inRange)
             {
-                count = 0;
-                canPort = true;
+                portNow = false;
+                Vector3 offset = transform.position - player.transform.position;
+                destinationPortal.GetComponent<TeleportScript>().portNow = false;
+                player.transform.position = destinationPortal.gameObject.transform.position - offset;
+            }
+            else
+            {
                 portNow = false;
             }
-            count++;
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Player") && portNow)
+        if (collision.gameObject.tag.Equals("Player"))
         {
-            portNow = false;
-            Vector3 offset = transform.position - collision.gameObject.transform.position;
-            destinationPortal.GetComponent<TeleportScript>().canPort = false;
-            destinationPortal.GetComponent<TeleportScript>().portNow = false;
-            collision.gameObject.transform.position = destinationPortal.gameObject.transform.position - offset;
+            player = collision.gameObject;
+            inRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            inRange = false;
         }
     }
 }
