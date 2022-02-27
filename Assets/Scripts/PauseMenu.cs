@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     bool escPressLastFrame = false;
+    bool canMoveLastState = true;
     [SerializeField]
     GameObject holder;
     public void ExitToMainMenu()
@@ -19,13 +20,14 @@ public class PauseMenu : MonoBehaviour
         {
             Debug.Log("Escape pressed.");
             holder.SetActive(true);
+            canMoveLastState = LevelManager.instance.getCanMove();
             LevelManager.instance.setCanMove(false);
         }
         escPressLastFrame = tmp;
     }
     public void BackToGame()
     {
-        LevelManager.instance.setCanMove(true);
+        LevelManager.instance.setCanMove(canMoveLastState);
     }
 
     public void RestartLevel()
