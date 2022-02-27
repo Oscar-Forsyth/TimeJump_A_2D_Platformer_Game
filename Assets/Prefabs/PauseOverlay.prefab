@@ -1125,6 +1125,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6894997126577906144}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: BackToGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6894997125224961255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,12 +1947,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Movement: Arrow keys/WASD
 
-    Pick Item: C
+    Jump: Spacebar
 
-    Drop Item: X
+    Pick Item: Z
 
-    Time
-    Jump: E'
+    Drop
+    Item: X
+
+    Time Jump: C'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -19,7 +19,12 @@ public class PauseMenu : MonoBehaviour
         {
             Debug.Log("Escape pressed.");
             holder.SetActive(true);
+            LevelManager.instance.setCanMove(false);
         }
         escPressLastFrame = tmp;
+    }
+    public void BackToGame()
+    {
+        LevelManager.instance.setCanMove(true);
     }
 }
