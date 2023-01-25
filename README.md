@@ -1,2 +1,2 @@
 # TimeJump_DAT510
-Spel
+2D platformer game
